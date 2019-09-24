@@ -1,0 +1,53 @@
+name:                public-api
+version:             1.0.0
+
+# extra-source-files:
+#   - .hlint.yaml
+#   - brittany.yaml
+
+default-extensions:
+  - FlexibleContexts
+  - FlexibleInstances
+  - GeneralizedNewtypeDeriving
+  - MultiParamTypeClasses
+  - OverloadedStrings
+  - QuasiQuotes
+  - RankNTypes
+  - ScopedTypeVariables
+
+ghc-options:
+  - -Weverything
+  - -Wno-all-missed-specializations
+  - -Wno-implicit-prelude
+  - -Wno-missed-specialisations
+  - -Wno-missing-exported-signatures
+  - -Wno-safe
+  - -Wno-unsafe
+
+dependencies:
+- base >= 4.7 && < 5
+
+library:
+  source-dirs: library
+
+executables:
+  public-api:
+    main:                Main.hs
+    source-dirs:         executable
+    ghc-options:
+    - -threaded
+    - -rtsopts
+    - -with-rtsopts=-N
+    dependencies:
+    - public-api
+
+tests:
+  public-api-test:
+    main:                Spec.hs
+    source-dirs:         test
+    ghc-options:
+    - -threaded
+    - -rtsopts
+    - -with-rtsopts=-N
+    dependencies:
+    - public-api
