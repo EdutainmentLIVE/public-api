@@ -8,7 +8,7 @@ services:
       - stack-work:/$PROJECT_DIR/.stack-work
       - /var/run/docker.sock:/var/run/docker.sock
     working_dir: $PROJECT_DIR
-    command: sh -c "stack build && stack exec public-api"
+    command: stack build --exec public-api
     ports:
       - '8080:8080'
     tty: true
