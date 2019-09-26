@@ -5,7 +5,6 @@ services:
     volumes:
       - stack-root:/stack-root      
       - .:$PROJECT_DIR
-      - stack-work:/$PROJECT_DIR/.stack-work
       - /var/run/docker.sock:/var/run/docker.sock
     working_dir: $PROJECT_DIR
     command: stack build --exec public-api
