@@ -1,0 +1,22 @@
+version: "3"
+services:
+  public-api-dev:
+    image: itprotv/stack:tag-2.1.3
+    volumes:
+      - stack-root:/stack-root      
+      - .:$PROJECT_DIR
+      - /var/run/docker.sock:/var/run/docker.sock
+    working_dir: $PROJECT_DIR
+    command: stack build --exec public-api
+    ports:
+      - '8080:8080'
+    tty: true
+
+volumes:
+  stack-root:
+  stack-work:
+
+networks:
+  default:
+    external:
+      name: itprotv_bridge
