@@ -1,6 +1,10 @@
-module Main where
+module Main (main) where
 
-import qualified HelloWorld
+import qualified API
+
+import qualified Network.Wai.Handler.Warp as Warp
 
 main :: IO ()
-main = HelloWorld.helloWorld
+main = do
+  putStrLn "Running api on localhost:8080"
+  Warp.run 8080 API.api

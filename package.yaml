@@ -26,6 +26,9 @@ ghc-options:
 
 dependencies:
 - base >= 4.7 && < 5
+- http-types
+- wai
+- warp
 
 library:
   source-dirs: library
