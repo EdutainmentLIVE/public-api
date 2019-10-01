@@ -1,14 +1,25 @@
+{-# LANGUAGE DataKinds #-}
+{-# LANGUAGE OverloadedStrings #-}
+{-# LANGUAGE TypeOperators #-}
 module API
-    ( api
+    ( serve
     ) where
 
 import qualified Network.Wai as Wai
-import qualified Network.HTTP.Types as Types
+import qualified Servant
+import Servant ((:>))
 
-api :: Wai.Application
-api _ respond = do
-    respond $ Wai.responseLBS
-        Types.status200
-        [("Content-Type", "text/plain")]
-        "Hello, Web!"
+type API = "hello" :> Servant.Get '[Servant.JSON] String
+
+helloWorld :: String
+helloWorld = "Hello World"
+
+server :: Servant.Server API
+server = pure helloWorld
+
+apiProxy :: Servant.Proxy API
+apiProxy = Servant.Proxy
+
+serve :: Wai.Application
+serve = Servant.serve apiProxy server
 
