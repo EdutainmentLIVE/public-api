@@ -27,9 +27,14 @@ ghc-options:
 dependencies:
 - aeson
 - base >= 4.7 && < 5
+- bytestring
 - http-types
+- lens
 - servant-server
+- servant-swagger
+- servant-swagger-ui
 - sqlite-simple
+- swagger2
 - text
 - transformers
 - wai
