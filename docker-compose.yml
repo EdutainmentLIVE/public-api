@@ -7,7 +7,7 @@ services:
       - .:$PROJECT_DIR
       - /var/run/docker.sock:/var/run/docker.sock
     working_dir: $PROJECT_DIR
-    command: stack build --exec public-api
+    command: sh -c "apt install liblzma-dev && stack build --exec public-api"
     ports:
       - '8080:8080'
     tty: true
